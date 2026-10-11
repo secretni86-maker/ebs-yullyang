@@ -1,0 +1,9 @@
+# 비밀번호·로그인 기록은 절대 올리지 않습니다
+data/auth.json
+data/sessions.json
+data/tmp_*
+data/backup/
+data/old_videos_blurred/
+__pycache__/
+*.pyc
+*.tmp
