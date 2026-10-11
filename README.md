@@ -17,3 +17,9 @@
 - `media/` : 사진·영상
 - `server/defaults.py` : 처음 문구·사진 배치 (파일을 직접 고치고 싶을 때)
 - `tools/` : 원본 사진·영상에 모자이크를 입혀 `media/`에 넣는 도구
+
+## 인터넷에 공개하기 (GitHub Pages)
+GitHub Pages 는 '보여주기만' 하는 정적 사이트입니다. 관리자 기능(글쓰기·사진 바꾸기)은 내 컴퓨터에서 쓰고,
+고친 뒤 공개 사이트에 반영하려면:
+1. `py tools/export_static.py` (공개용 파일을 `../_pages` 에 만듭니다)
+2. `_pages` 폴더에서 `git add -A && git commit -m "update" && git push -f origin gh-pages`

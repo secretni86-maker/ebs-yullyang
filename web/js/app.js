@@ -2,6 +2,26 @@
 (function () {
   "use strict";
   var C = window.__BOOT__ || { site: {}, slots: {}, gallery: [], videos: [], posts: [], reviews: [] };
+  var BASE = window.__BASE__ || "";      // 예: "/ebs-yullyang" (내 컴퓨터에서는 빈 값)
+  var STATIC = !!window.__STATIC__;      // 정적 사이트(관리 기능 없음)
+  function prefixDeep(o) {
+    if (!BASE) return o;
+    if (typeof o === "string") return o.indexOf("/media/") === 0 ? BASE + o : o;
+    if (Array.isArray(o)) return o.map(prefixDeep);
+    if (o && typeof o === "object") { var r = {}; Object.keys(o).forEach(function (k) { r[k] = prefixDeep(o[k]); }); return r; }
+    return o;
+  }
+  C = prefixDeep(C);
+  function fixLinks(root) {
+    if (!BASE) return;
+    Array.prototype.forEach.call((root || document).querySelectorAll('[href^="/"],[src^="/"],[poster^="/"]'), function (el) {
+      ["href", "src", "poster"].forEach(function (a) {
+        var v = el.getAttribute(a);
+        if (v && v.charAt(0) === "/" && v.charAt(1) !== "/" && v.indexOf(BASE + "/") !== 0 && v !== BASE) el.setAttribute(a, BASE + v);
+      });
+    });
+  }
+  function stripBase(p) { if (BASE && p.indexOf(BASE) === 0) p = p.slice(BASE.length); return p.replace(/\/$/, "") || "/"; }
   var ME = { admin: false, needSetup: false };
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -77,7 +97,7 @@
       "<div><h4>CONTACT</h4><div class=\"fl\"><span>원장 " + esc(s.director) + '</span><a href="' + telHref() + '">' + esc(s.phone) + "</a><span>" + esc(s.address) + "</span><span style=\"color:#a99d90\">" + esc(s.addressNote) + "</span></div></div>" +
       '<div><h4>LINKS</h4><div class="fl">' + (b ? ext(b, "네이버 블로그") : "") + (i ? ext(i, "인스타그램") : "") + (safeUrl(s.kakao) ? ext(s.kakao, "카카오톡 상담") : "") + (safeUrl(s.youtube) ? ext(s.youtube, "유튜브") : "") +
       link("/contact", "상담·수업 문의") + link("/location", "오시는 길") + "</div></div></div>" +
-      '<div class="copy"><span>© ' + new Date().getFullYear() + " " + esc(s.name) + '</span><a href="/admin" data-link style="opacity:.55">관리</a></div></div>';
+      '<div class="copy"><span>© ' + new Date().getFullYear() + " " + esc(s.name) + '</span>' + (STATIC ? "" : '<a href="/admin" data-link style="opacity:.55">관리</a>') + '</div></div>';
   }
   function drawCtaBar(path) {
     var bar = $("#ctabar");
@@ -349,12 +369,12 @@
   }
 
   /* ───────── 라우터 ───────── */
-  var path = location.pathname.replace(/\/$/, "") || "/";
+  var path = stripBase(location.pathname);
   function render(p, push) {
     p = (p || "/").replace(/\/$/, "") || "/";
-    if (!P[p]) p = "/";
+    if (!P[p] || (STATIC && p === "/admin")) p = "/";
     path = p;
-    if (push) history.pushState({}, "", p);
+    if (push) history.pushState({}, "", BASE + p);
     document.body.classList.remove("menu-open");
     var colors = C.site;
     var root = document.documentElement.style;
@@ -363,6 +383,7 @@
     $("#main").innerHTML = P[p]();
     applyTexts();
     drawFooter(); drawCtaBar(p); drawAdminPill(p);
+    fixLinks($("#hdr")); fixLinks($("#main")); fixLinks($("#ftr")); fixLinks($("#ctabar"));
     if (push) {
       var t = TITLES[p];
       document.title = (p === "/" ? "청주 율량·주성동 영어학원 | " + C.site.name : t + " | " + C.site.name);
@@ -388,7 +409,7 @@
     var a = e.target.closest("a[data-link]");
     if (a && !e.metaKey && !e.ctrlKey && !e.shiftKey && a.target !== "_blank") {
       var u = new URL(a.href, location.href);
-      if (u.origin === location.origin && P[u.pathname.replace(/\/$/, "") || "/"]) { e.preventDefault(); render(u.pathname, true); return; }
+      if (u.origin === location.origin && P[stripBase(u.pathname)] && !(STATIC && stripBase(u.pathname) === "/admin")) { e.preventDefault(); render(stripBase(u.pathname), true); return; }
     }
     var b = e.target.closest("[data-act]");
     if (b) {
@@ -451,14 +472,14 @@
     if (v === c.dataset.orig) return;
     window.EBSAdmin.saveCaption(c.dataset.capslot, v).then(function () { c.dataset.orig = v; toast("글씨를 저장했어요"); }).catch(function (er) { toast(er.message); });
   });
-  window.addEventListener("popstate", function () { render(location.pathname, false); });
+  window.addEventListener("popstate", function () { render(stripBase(location.pathname), false); });
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("load", function () { /* 자주 보는 첫 페이지 이미지 미리 확보 */ });
 
   /* ───────── 시작 ───────── */
   window.EBS = { get C() { return C; }, set C(v) { C = v; }, get ME() { return ME; }, esc: esc, toast: toast, render: function () { render(path, false); }, setMe: function (m) { ME = m; render(path, false); }, go: function (p) { render(p, true); }, thumb: thumb, CATS: CATS, POSTCATS: POSTCATS };
   render(path, false);
-  fetch("/api/me", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (m) {
+  if (!STATIC) fetch("/api/me", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (m) {
     ME = m;
     if (m.admin && ls("ebs-edit") === "1") document.body.classList.add("edit-on");
     if (m.admin || path === "/admin") render(path, false);
