@@ -423,6 +423,7 @@
     }
     var z = e.target.closest("[data-lb]");
     if (z && !e.target.closest(".editpen")) { var g = LB.groups[z.dataset.lb] || []; if (g.length) LB.open(g, +z.dataset.i); return; }
+    if (document.body.classList.contains("menu-open") && !e.target.closest(".drawer") && !e.target.closest(".burger")) { document.body.classList.remove("menu-open"); var bb = $(".burger"); if (bb) bb.setAttribute("aria-expanded", "false"); }
     if (e.target.closest(".burger")) { var o = document.body.classList.toggle("menu-open"); $(".burger").setAttribute("aria-expanded", o); return; }
     if (LB.el && !LB.el.hidden) {
       if (e.target.closest(".x") || e.target.classList.contains("stage")) LB.close();
