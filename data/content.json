@@ -23,27 +23,27 @@
     "sage": "#6b7a68"
   },
   "slots": {
-    "hero": "/media/photos/class-floor-game.jpg",
+    "hero": "/media/uploads/p-9f76d20814.jpg",
     "philosophy": "/media/photos/class-alphabet-blocks.jpg",
-    "kinder": "/media/photos/class-family-tree.jpg",
-    "elementary": "/media/photos/class-reading-desks.jpg",
-    "middle": "/media/stock/middle-book.jpg",
-    "about": "/media/brand/director.jpg",
-    "act-read": "/media/photos/class-reading-focus.jpg",
+    "kinder": "/media/uploads/p-2e18ad2e2f.jpg",
+    "elementary": "/media/uploads/p-dbbca7a488.jpg",
+    "middle": "/media/uploads/p-76f171f16b.jpg",
+    "about": "/media/uploads/p-2fe65d8c6a.jpg",
+    "act-read": "/media/uploads/p-29817738d2.jpg",
     "act-speak": "/media/photos/class-phonics-cards.jpg",
     "act-write": "/media/photos/work-vegetable-man.jpg",
-    "act-project": "/media/uploads/p-54b9af0f6a.jpg",
+    "act-project": "/media/uploads/p-fba638639d.jpg",
     "kinder-hero": "/media/photos/class-emotion-craft.jpg",
-    "kinder-a": "/media/photos/class-phonics-cards.jpg",
-    "kinder-b": "/media/photos/class-animal-yoga.jpg",
-    "kinder-c": "/media/photos/class-family-tree.jpg",
-    "elementary-hero": "/media/photos/class-laughing-reading.jpg",
-    "elementary-a": "/media/photos/class-science-water.jpg",
-    "elementary-b": "/media/photos/class-reading-desks.jpg",
-    "elementary-c": "/media/uploads/p-2436383898.jpg",
-    "middle-hero": "/media/stock/middle-library.jpg",
-    "middle-a": "/media/stock/middle-book.jpg",
-    "cta": "/media/photos/class-reading-focus.jpg"
+    "kinder-a": "/media/uploads/p-b22305ad22.jpg",
+    "kinder-b": "/media/uploads/p-5b191a117b.jpg",
+    "kinder-c": "/media/uploads/p-1c488b7726.jpg",
+    "elementary-hero": "/media/uploads/p-8e60e3e415.jpg",
+    "elementary-a": "/media/uploads/p-226da31c0d.jpg",
+    "elementary-b": "/media/uploads/p-9f078dfc9c.jpg",
+    "elementary-c": "/media/uploads/p-1e85f484f4.jpg",
+    "middle-hero": "/media/uploads/p-f2c25a8c9a.jpg",
+    "middle-a": "/media/uploads/p-0084afed91.jpg",
+    "cta": "/media/uploads/p-5ef080f239.jpg"
   },
   "slotNotes": {
     "hero": "홈 맨 위 큰 사진",
@@ -70,10 +70,52 @@
   },
   "gallery": [
     {
-      "id": "g-class-floor-game",
-      "src": "/media/photos/class-floor-game.jpg",
-      "thumb": "/media/photos/class-floor-game_t.jpg",
-      "caption": "파닉스게임 A3",
+      "id": "g-22x31pt",
+      "src": "/media/uploads/p-6ae3839bea.jpg",
+      "thumb": "/media/uploads/p-6ae3839bea_t.jpg",
+      "caption": "",
+      "cat": "elementary"
+    },
+    {
+      "id": "g-ds5hxhw",
+      "src": "/media/uploads/p-354b80323e.jpg",
+      "thumb": "/media/uploads/p-354b80323e_t.jpg",
+      "caption": "",
+      "cat": "elementary"
+    },
+    {
+      "id": "g-dks0s90",
+      "src": "/media/uploads/p-7ad364e76e.jpg",
+      "thumb": "/media/uploads/p-7ad364e76e_t.jpg",
+      "caption": "",
+      "cat": "elementary"
+    },
+    {
+      "id": "g-alui834",
+      "src": "/media/uploads/p-42252055ec.jpg",
+      "thumb": "/media/uploads/p-42252055ec_t.jpg",
+      "caption": "",
+      "cat": "kinder"
+    },
+    {
+      "id": "g-2xvl6yz",
+      "src": "/media/uploads/p-c5f6d3551f.jpg",
+      "thumb": "/media/uploads/p-c5f6d3551f_t.jpg",
+      "caption": "",
+      "cat": "kinder"
+    },
+    {
+      "id": "g-4m7lai2",
+      "src": "/media/uploads/p-77d01671b3.jpg",
+      "thumb": "/media/uploads/p-77d01671b3_t.jpg",
+      "caption": "",
+      "cat": "kinder"
+    },
+    {
+      "id": "g-4r0m3yy",
+      "src": "/media/uploads/p-8345fe5ef5.jpg",
+      "thumb": "/media/uploads/p-8345fe5ef5_t.jpg",
+      "caption": "",
       "cat": "kinder"
     },
     {
@@ -236,13 +278,6 @@
   "posts": [],
   "reviews": [
     {
-      "id": "r-abnag0d",
-      "cat": "elementary",
-      "who": "초등 4학년 Y* 학부모님",
-      "text": "믿고 맡길 수 있어서 넘 좋고 감사합니다.",
-      "created": "2026-10-12"
-    },
-    {
       "id": "r-xwdwq7z",
       "cat": "elementary",
       "who": "초등 5학년  J*학부모님",
@@ -317,24 +352,27 @@
     ]
   },
   "slotCaptions": {
-    "kinder-a": "그림 카드를 짚으며 소리와 단어를 맞춰요",
-    "kinder-b": "animal yoga",
+    "kinder-a": "파닉스 퍼즐을 맞춰요",
+    "kinder-b": "Making Shape",
     "kinder-c": "My Family Tree를 만들며 가족을 영어로 소개해요",
     "elementary-a": "물의 증발을 학습해요 (Science)",
-    "elementary-b": "Speaking and role playing",
-    "elementary-c": "중등 문법을 학습해요",
-    "middle-hero": "조용히 집중하는 학습 공간",
-    "middle-a": "책을 깊이 읽는 시간",
-    "cta": "함께 배우는 교실"
+    "elementary-b": "기초문법,어휘를 학습해요",
+    "elementary-c": "생각을 정리해 발표해요",
+    "middle-hero": "실력 다지기",
+    "middle-a": "내신관리",
+    "cta": "문법,어휘점검"
   },
   "texts": {
     "/|유치부 · 초등부 · 중등부. 수업의 절반은 영어로, 나머지는 읽기·말하기·쓰기·발표·프로젝트로 채우는 작은 영어 스튜디오입니다.": "유치부 · 초등부 · 중등부. \n영어로 읽기·말하기·쓰기·발표·프로젝트로 채우는 작은 영어 스튜디오입니다.",
     "/|읽고, 말하고, 만들며\n영어가 자라는 시간": "읽고, 쓰고, 말하고, \n영어가 자라는 시간",
     "/|주성동 · 율량동 사이": "주성동",
-    "/|영어 약 50% + 활동 수업": "영어 약 50% + 활동 수업\n기초탄탄 질문하는 참여수업",
+    "/|영어 약 50% + 활동 수업": "영어로 수업하고 생각하고 발표하는\n프리미엄 맞춤수업",
     "/|수업 시간, 아이들은 이런 걸 해요": "수업 시간, 우리 아이들은?",
     "/|교재를 풀기만 하는 시간이 아닙니다. 읽은 것을 말로 옮기고, 직접 써 보고, 만들어서 발표합니다.": "교재를 풀기만 하는 시간이 아닙니다. 이해하고, 읽은 것을 말로 옮기고, 직접 써 보고, 만들어서 발표합니다.",
     "/|움직이는 수업 모습": "수업 영상",
-    "/contact|상담 · 체험수업 문의": "상담 · 수업 문의"
+    "/contact|상담 · 체험수업 문의": "상담 · 수업 문의",
+    "/|유치부는 친해지기, 초등부는 읽고 표현하기, 중등부는 학교 영어와 서술형으로 이어집니다.": "유치부는 친해지기, 초등부는 읽고 표현해 다지기, 중등부는 학교 영어 , 내신준비와 실력표출로 이어집니다.",
+    "/|외워서 시험을 보는 영어보다, 읽고 말하고 써 보며 스스로 쓰게 되는 영어를 지향합니다. 아이마다 속도는 다르다고 생각해서, 한 명 한 명을 가까이에서 살핍니다.": "외워서 시험을 보는 영어보다, 읽고 말하고 써 보며 스스로 쓰게 되는 영어를 지향합니다. 아이마다 속도는 다릅니다. 한 명 한 명을 가까이에서 살핍니다.",
+    "/gallery|실제 수업의 모습입니다. 사진을 누르면 크게 볼 수 있고, 옆으로 넘길 수 있어요. 아이들 얼굴은 모자이크 처리했습니다.": "실제 수업의 모습입니다. 사진을 누르면 크게 볼 수 있고, 옆으로 넘길 수 있어요. 아이들 얼굴은 모자이크, 혹은 이미지 처리했습니다."
   }
 }

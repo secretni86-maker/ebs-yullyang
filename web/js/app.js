@@ -91,14 +91,6 @@
       '<div class="drawer" id="drawer">' + DRAWER.map(function (d) { return '<a class="l" href="' + d[0] + '" data-link' + cur(d[0]) + ">" + d[1] + "<small>" + d[2] + "</small></a>"; }).join("") +
       '<div class="btnrow"><a class="btn primary" href="' + telHref() + '">전화 상담 ' + esc(s.phone) + '</a><a class="btn" href="/contact" data-link>수업 문의</a></div></div>';
   }
-  // 모바일: 로고 아래에 모든 메뉴를 작은 글씨로 한눈에 (스크롤하면 위로 사라지고, 햄버거 메뉴는 그대로 사용)
-  var MSHORT = { "/tuition": "수업료·시간표", "/contact": "수업 문의" };
-  function drawMobileNav(path) {
-    var el = $("#mnav"); if (!el) return;
-    el.innerHTML = DRAWER.map(function (d) {
-      return '<a href="' + d[0] + '" data-link' + (d[0] === path ? ' aria-current="page"' : "") + ">" + (MSHORT[d[0]] || d[1]) + "</a>";
-    }).join("");
-  }
   function drawFooter() {
     var s = C.site, b = safeUrl(s.blog), i = safeUrl(s.instagram);
     $("#ftr").innerHTML = '<div class="wrap"><div class="cols"><div><div class="nm">' + esc(s.name) + "</div><div>" + esc(s.nameEn) + '</div><p style="margin-top:12px;color:#a99d90">' + esc(s.tagline) + '</p></div>' +
@@ -387,11 +379,11 @@
     var colors = C.site;
     var root = document.documentElement.style;
     root.setProperty("--accent", colors.accent); root.setProperty("--ink", colors.ink); root.setProperty("--bg", colors.bg); root.setProperty("--sage", colors.sage);
-    drawHeader(p); drawMobileNav(p);
+    drawHeader(p);
     $("#main").innerHTML = P[p]();
     applyTexts();
     drawFooter(); drawCtaBar(p); drawAdminPill(p);
-    fixLinks($("#hdr")); fixLinks($("#mnav")); fixLinks($("#main")); fixLinks($("#ftr")); fixLinks($("#ctabar"));
+    fixLinks($("#hdr")); fixLinks($("#main")); fixLinks($("#ftr")); fixLinks($("#ctabar"));
     if (push) {
       var t = TITLES[p];
       document.title = (p === "/" ? "청주 율량·주성동 영어학원 | " + C.site.name : t + " | " + C.site.name);
@@ -431,6 +423,7 @@
     }
     var z = e.target.closest("[data-lb]");
     if (z && !e.target.closest(".editpen")) { var g = LB.groups[z.dataset.lb] || []; if (g.length) LB.open(g, +z.dataset.i); return; }
+    if (document.body.classList.contains("menu-open") && !e.target.closest(".drawer") && !e.target.closest(".burger")) { document.body.classList.remove("menu-open"); var bb = $(".burger"); if (bb) bb.setAttribute("aria-expanded", "false"); }
     if (e.target.closest(".burger")) { var o = document.body.classList.toggle("menu-open"); $(".burger").setAttribute("aria-expanded", o); return; }
     if (LB.el && !LB.el.hidden) {
       if (e.target.closest(".x") || e.target.classList.contains("stage")) LB.close();
