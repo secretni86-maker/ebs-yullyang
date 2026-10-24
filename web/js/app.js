@@ -91,6 +91,14 @@
       '<div class="drawer" id="drawer">' + DRAWER.map(function (d) { return '<a class="l" href="' + d[0] + '" data-link' + cur(d[0]) + ">" + d[1] + "<small>" + d[2] + "</small></a>"; }).join("") +
       '<div class="btnrow"><a class="btn primary" href="' + telHref() + '">전화 상담 ' + esc(s.phone) + '</a><a class="btn" href="/contact" data-link>수업 문의</a></div></div>';
   }
+  // 모바일: 로고 아래에 모든 메뉴를 작은 글씨로 한눈에 (스크롤하면 위로 사라지고, 햄버거 메뉴는 그대로 사용)
+  var MSHORT = { "/tuition": "수업료·시간표", "/contact": "수업 문의" };
+  function drawMobileNav(path) {
+    var el = $("#mnav"); if (!el) return;
+    el.innerHTML = DRAWER.map(function (d) {
+      return '<a href="' + d[0] + '" data-link' + (d[0] === path ? ' aria-current="page"' : "") + ">" + (MSHORT[d[0]] || d[1]) + "</a>";
+    }).join("");
+  }
   function drawFooter() {
     var s = C.site, b = safeUrl(s.blog), i = safeUrl(s.instagram);
     $("#ftr").innerHTML = '<div class="wrap"><div class="cols"><div><div class="nm">' + esc(s.name) + "</div><div>" + esc(s.nameEn) + '</div><p style="margin-top:12px;color:#a99d90">' + esc(s.tagline) + '</p></div>' +
@@ -379,11 +387,11 @@
     var colors = C.site;
     var root = document.documentElement.style;
     root.setProperty("--accent", colors.accent); root.setProperty("--ink", colors.ink); root.setProperty("--bg", colors.bg); root.setProperty("--sage", colors.sage);
-    drawHeader(p);
+    drawHeader(p); drawMobileNav(p);
     $("#main").innerHTML = P[p]();
     applyTexts();
     drawFooter(); drawCtaBar(p); drawAdminPill(p);
-    fixLinks($("#hdr")); fixLinks($("#main")); fixLinks($("#ftr")); fixLinks($("#ctabar"));
+    fixLinks($("#hdr")); fixLinks($("#mnav")); fixLinks($("#main")); fixLinks($("#ftr")); fixLinks($("#ctabar"));
     if (push) {
       var t = TITLES[p];
       document.title = (p === "/" ? "청주 율량·주성동 영어학원 | " + C.site.name : t + " | " + C.site.name);
